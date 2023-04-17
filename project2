@@ -1,0 +1,55 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SpiceJetFlightBookingTest {
+
+    public static void main(String[] args) {
+     
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.spicejet.com/");
+
+        WebElement signUpFirstName = driver.findElement(By.id("ControlGroupRegisterView_MemberRegisterViewFirstName"));
+        signUpFirstName.sendKeys("John");
+        WebElement signUpLastName = driver.findElement(By.id("ControlGroupRegisterView_MemberRegisterViewLastName"));
+        signUpLastName.sendKeys("Doe");
+       
+        WebElement loginButton = driver.findElement(By.id("ctl00_HyperLinkLogin"));
+        loginButton.click();
+
+        WebElement emailInput = driver.findElement(By.id("ControlGroupLoginView_MemberLoginView2LoginView_TextBoxUserID"));
+        emailInput.sendKeys("dummy_email@example.com");
+        WebElement passwordInput = driver.findElement(By.id("ControlGroupLoginView_MemberLoginView2LoginView_PasswordFieldPassword"));
+        passwordInput.sendKeys("dummy_password");
+        WebElement loginSubmitButton = driver.findElement(By.id("ControlGroupLoginView_MemberLoginView2LoginView_ButtonLogIn"));
+        loginSubmitButton.click();
+
+        WebElement oneWayRadioButton = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_OneWay"));
+        oneWayRadioButton.click();
+        WebElement fromCityInput = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT"));
+        fromCityInput.sendKeys("DummyOrigin");
+      
+        WebElement roundTripRadioButton = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_RoundTrip"));
+        roundTripRadioButton.click();
+        WebElement toCityInput = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTXT"));
+        toCityInput.sendKeys("DummyDestination");
+        
+        WebElement searchButton = driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_ButtonSubmit"));
+        searchButton.click();
+
+        WebElement flightSelection = driver.findElement(By.xpath("//input[@value='Select']"));
+        flightSelection.click();
+
+        WebElement firstNameInput = driver.findElement(By.id("CONTROLGROUPPAYMENTBOTTOM_PassengerInputContactInfoViewPassengerView_TextBoxFirstName_1"));
+        firstNameInput.sendKeys("John");
+        WebElement lastNameInput = driver.findElement(By.id("CONTROLGROUPPAYMENTBOTTOM_PassengerInputContactInfoViewPassengerView_TextBoxLastName_1"));
+        lastNameInput.sendKeys("Doe");
+       
+        WebElement makePaymentButton = driver.findElement(By.id("CONTROLGROUPPAYMENTBOTTOM_PassengerInputContactInfoViewPassengerView_ButtonSubmit"));
+        makePaymentButton.click();
+
+        WebElement confirmationMessage = driver.findElement(By.id("CONTROLGROUPPAYMENTBOTTOM_PassengerInputContactInfoView_Div1
